@@ -57,99 +57,138 @@ const WhatweDo = () => {
     Aos.init({ duration: 800 });
   }, []);
 
-  const CustomBox = styled(Box)(({ theme }) => ({
-    // backgroundImage:
-    //   "linear-gradient(90deg, rgba(255,254,254,1) 0%, rgba(171,129,67,1) 100%)",
-    backgroundColor:
-      mode === "light"
-        ? color.light.secondarybackground
-        : color.dark.secondarybackground,
-    padding: theme.spacing(1, 0, 0, 0),
-    margin: theme.spacing(0, 0, 0, 0),
-    [theme.breakpoints.down("md")]: {
-      padding: "0",
-    },
-  }));
   const { t } = useTranslation();
   return (
     <>
-      <Box sx={{ backgroundColor: "white", padding: "10px" }}>
-        <Container
-          sx={{
-            display: "flex",
-            justifyContent: "flex-start",
-            padding: "5px",
-            alignItems: "center",
-            marginBottom: "40px",
-          }}
-        >
-          <h1 style={{ fontSize: "2em", marginBottom: "0.5rem" }}>
-            What We Do
-          </h1>
-        </Container>
-        <Container
-          sx={{
-            display: "flex",
-            gap: "0.5rem",
-            justifyContent: {
-              lg: "flex-start",
-              md: "center",
-              sm: "center",
-              xs: "center",
-            },
-            flexWrap: "wrap",
-            alignItems: "center",
-          }}
-        >
-          <div data-aos="flip-left">
-            <SectionCard text={t("whatwedoHead4")} />
-          </div>
-          <SectionCard text={t("whatwedoHead3")} />
-          <div data-aos="flip-right">
-            <SectionCard text={t("whatwedoHead3")} />
-          </div>
-        </Container>
-      </Box>
-
       <Box
-        sx={{ backgroundColor: "white", padding: "10px", marginTop: "30px" }}
+        sx={{
+          backgroundColor:
+            mode === "light"
+              ? color.light.background
+              : color.dark.backgroundSection,
+        }}
       >
-        <Container
+        <Box
           sx={{
-            display: "flex",
-            justifyContent: "flex-start",
-            padding: "5px",
-            alignItems: "center",
-            marginBottom: "40px",
+            backgroundColor: "white",
+            padding: "10px",
+            backgroundColor:
+              mode === "light"
+                ? color.light.background
+                : color.dark.backgroundSection,
           }}
         >
-          <h1 style={{ fontSize: "2em", marginBottom: "0.5rem" }}>
-            Our Mission
-          </h1>
-        </Container>
-        <Container
-          sx={{
-            display: "flex",
-            gap: "0.5rem",
-            justifyContent: {
-              lg: "flex-start",
-              md: "center",
-              sm: "center",
-              xs: "center",
-            },
-            flexWrap: "wrap",
-            alignItems: "center",
-            marginBottom: "2rem",
-          }}
-        >
-          <div data-aos="flip-left">
-            <SectionCard text={t("whatwedoHead4")} />
-          </div>
-          <SectionCard text={t("whatwedoHead3")} />
-          <div data-aos="flip-right">
+          <Container
+            sx={{
+              display: "flex",
+              justifyContent: "flex-start",
+              padding: "5px",
+              alignItems: "center",
+              marginBottom: "40px",
+            }}
+          >
+            <h1
+              style={{
+                fontSize: "2em",
+                marginBottom: "0.5rem",
+                color:
+                  mode === "light"
+                    ? color.light.primarycolor
+                    : color.dark.primarycolor,
+              }}
+            >
+              What We Do
+            </h1>
+          </Container>
+          <Container
+            sx={{
+              display: "flex",
+              gap: "0.5rem",
+              justifyContent: {
+                lg: "flex-start",
+                md: "center",
+                sm: "center",
+                xs: "center",
+              },
+              flexWrap: "wrap",
+              alignItems: "center",
+              color:
+                mode === "light"
+                  ? color.light.primarycolor
+                  : color.dark.primarycolor,
+            }}
+          >
+            <div data-aos="flip-left">
+              <SectionCard text={t("whatwedoHead4")} />
+            </div>
             <SectionCard text={t("whatwedoHead3")} />
-          </div>
-        </Container>
+            <div data-aos="flip-right">
+              <SectionCard text={t("whatwedoHead3")} />
+            </div>
+          </Container>
+        </Box>
+
+        <Box
+          sx={{
+            backgroundColor: "white",
+            padding: "10px",
+            marginTop: "30px",
+            backgroundColor:
+              mode === "light"
+                ? color.light.background
+                : color.dark.backgroundSection,
+          }}
+        >
+          <Container
+            sx={{
+              display: "flex",
+              justifyContent: "flex-start",
+              padding: "5px",
+              alignItems: "center",
+              marginBottom: "40px",
+            }}
+          >
+            <h1
+              style={{
+                fontSize: "2em",
+                marginBottom: "0.5rem",
+                color:
+                  mode === "light"
+                    ? color.light.primarycolor
+                    : color.dark.primarycolor,
+              }}
+            >
+              Our Mission
+            </h1>
+          </Container>
+          <Container
+            sx={{
+              display: "flex",
+              gap: "0.5rem",
+              justifyContent: {
+                lg: "flex-start",
+                md: "center",
+                sm: "center",
+                xs: "center",
+              },
+              flexWrap: "wrap",
+              alignItems: "center",
+              marginBottom: "2rem",
+              color:
+                mode === "light"
+                  ? color.light.primarycolor
+                  : color.dark.primarycolor,
+            }}
+          >
+            <div data-aos="flip-left">
+              <SectionCard text={t("whatwedoHead4")} />
+            </div>
+            <SectionCard text={t("whatwedoHead3")} />
+            <div data-aos="flip-right">
+              <SectionCard text={t("whatwedoHead3")} />
+            </div>
+          </Container>
+        </Box>
       </Box>
     </>
   );

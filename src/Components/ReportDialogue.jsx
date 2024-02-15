@@ -1,19 +1,19 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
+
 import Dialog from "@mui/material/Dialog";
 // import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import CloseIcon from "@mui/icons-material/Close";
 // import DialogTitle from "@mui/material/DialogTitle";
-import { TextField } from "@mui/material";
+import { TextField, ThemeProvider } from "@mui/material";
 // import ReportIcon from "@mui/icons-material/Report";
 import { IconButton, Typography } from "@mui/material";
-import { useContext } from "react";
-import { globalState } from "../App";
 import { Tooltip } from "@mui/material";
 import color from "../styles/colors";
 import { Box } from "@mui/material";
 import CustomButton from "../utils/CustomButton";
+
+import { globalState } from "../App";
 import { Slide } from "@mui/material";
 import FlagIcon from "@mui/icons-material/Flag";
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -21,14 +21,27 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function ReportDialogue() {
-  const { mode } = useContext(globalState);
   const [open, setOpen] = React.useState(false);
+  const { mode } = React.useContext(globalState);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-
+  const newstyle = {
+    backgroundColor:
+      mode === "light" ? color.light.secondarybtn : color.dark.primarybtn,
+    borderRadius: "5px",
+    marginBottom: "20px",
+  };
   const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formdata = new FormData(e.currentTarget);
+    console.log(formdata);
+
     setOpen(false);
   };
 
@@ -92,6 +105,8 @@ export default function ReportDialogue() {
             <CloseIcon />
           </IconButton>
           <Box
+            component="form"
+            onSubmit={handleSubmit}
             sx={{
               display: "flex",
               justifyContent: "flex-start",
@@ -130,6 +145,7 @@ export default function ReportDialogue() {
               maxRows={2}
               variant="standard"
               fullWidth
+              sx={newstyle}
             />
             <TextField
               label="Comments"
@@ -137,23 +153,23 @@ export default function ReportDialogue() {
               maxRows={2}
               variant="standard"
               fullWidth
-              sx={{ marginBottom: "20px" }}
+              sx={newstyle}
             />
-            <Box onClick={handleClose}>
-              <CustomButton
-                buttonText={"SUBMIT"}
-                backgroundColor={
-                  mode === "light"
-                    ? color.light.primarybtn
-                    : color.dark.primarybtn
-                }
-                color={
-                  mode === "light"
-                    ? color.light.primarybtntext
-                    : color.dark.primarybtntext
-                }
-              />
-            </Box>
+
+            <CustomButton
+              type="submit"
+              buttonText={"SUBMIT"}
+              backgroundColor={
+                mode === "light"
+                  ? color.light.primarybtn
+                  : color.dark.primarybtn
+              }
+              color={
+                mode === "light"
+                  ? color.light.primarybtntext
+                  : color.dark.primarybtntext
+              }
+            />
           </Box>
         </DialogContent>
       </Dialog>

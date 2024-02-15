@@ -39,7 +39,15 @@ const theme = createTheme({
 export default function ContactUs() {
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.target);
+    // console.log(event);
+
+    const formdata = new FormData(event.currentTarget);
+    const data = {
+      City: formdata.get("City"),
+      WardNo: formdata.get("WardNo"),
+      Name: formdata.get("Name"),
+      Message: formdata.get("Message"),
+    };
     console.log(data);
     handleClick();
   };
@@ -56,6 +64,7 @@ export default function ContactUs() {
 
     setOpen(false);
   };
+
   const { mode } = useContext(globalState);
   const CustomBox = styled(Box)(({ theme }) => ({
     display: "flex",
@@ -269,35 +278,29 @@ export default function ContactUs() {
                     />
                   </Grid>
                 </Grid>
-                <div>
-                  <Box
-                    sx={{
-                      mt: 2,
-                      // border: "5px solid black",
-                    }}
-                  >
-                    <CustomButton
-                      type="submit"
-                      onClick={handleClick}
-                      backgroundColor={color.dark.primarybtn}
-                      buttonText={"Submit"}
-                      fullwidth={true}
-                    />
-                  </Box>
-                  <Snackbar
-                    open={open}
-                    autoHideDuration={3000}
+
+                <CustomButton
+                  type="submit"
+                  // onClick={handleClick}
+                  backgroundColor={color.dark.primarybtn}
+                  buttonText={"Submit"}
+                  fullwidth={true}
+                  style={{ marginTop: "10px" }}
+                />
+
+                <Snackbar
+                  open={open}
+                  autoHideDuration={3000}
+                  onClose={handleClose}
+                >
+                  <Alert
                     onClose={handleClose}
+                    severity="primary"
+                    sx={{ width: "100%" }}
                   >
-                    <Alert
-                      onClose={handleClose}
-                      severity="primary"
-                      sx={{ width: "100%" }}
-                    >
-                      Thank you for contacting us!
-                    </Alert>
-                  </Snackbar>
-                </div>
+                    Thank you for contacting us!
+                  </Alert>
+                </Snackbar>
               </Box>
             </Box>
           </Box>

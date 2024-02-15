@@ -14,13 +14,23 @@ import Footer from "../Components/Footer";
 import { Grid } from "@mui/material";
 
 const Caro = ({ position, data }) => {
+  const { mode } = useContext(globalState);
+
   return (
     <>
       <Typography
         variant="h4"
         font-size="0.5rem"
         align="left"
-        sx={{ borderTop: 1 }}
+        sx={{
+          color:
+            mode === "light"
+              ? color.light.secondarycardtext
+              : color.dark.primarybtn,
+          fontWeight: "bold",
+          letterSpacing: "0.5px",
+          marginTop: "2rem",
+        }}
       >
         {" "}
         {position}

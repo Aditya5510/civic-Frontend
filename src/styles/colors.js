@@ -16,9 +16,10 @@ const color = {
         secondarycardtext: "#000",
     },
     dark: {
+        backgroundSection: "#2D2D2D",
         background: "#000",
         navbackground: "#000",
-        secondarybackground: "#222",
+        secondarybackground: "black",
         primarycolor: "white",
         secondarycolor: "#A99E92",
         primarybtn: "#EFE1D1",

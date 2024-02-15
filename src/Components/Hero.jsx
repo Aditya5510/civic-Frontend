@@ -119,7 +119,7 @@ const Hero = () => {
             >
               {t("subtitle")}
             </Typography>
-            <Box sx={{ display: "flex", gap: "1rem" }}>
+            {/* <Box sx={{ display: "flex", gap: "1rem" }}>
               <CustomButton
                 backgroundColor={
                   mode === "dark"
@@ -150,7 +150,7 @@ const Hero = () => {
                 heroBtn={true}
                 startIcon={<AppleIcon></AppleIcon>}
               />
-            </Box>
+            </Box>*/}
           </Box>
 
           <Box
